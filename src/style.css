@@ -1,1 +1,33 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0d1117;
+  color: white;
+}
 
+.app {
+  text-align: center;
+  padding: 50px;
+}
+
+h1 {
+  font-size: 60px;
+  color: gold;
+}
+
+button {
+  padding: 15px 30px;
+  border: none;
+  background: gold;
+  color: black;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+}
