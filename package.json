@@ -1,18 +1,2 @@
-{
-  "name": "tigerwing-phase3-staff-tools",
-  "private": true,
-  "version": "3.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.45.4",
-    "vite": "^5.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "lucide-react": "^0.468.0"
-  }
-}
+{"name":"tigerwing-phase4-form-emails","private":true,"version":"4.0.0","type":"module","scripts":{"dev":"vite --host 0.0.0.0","build":"vite build","preview":"vite preview"},"dependencies":{"@supabase/supabase-js":"^2.45.4","vite":"^5.2.0","react":"^18.2.0","react-dom":"^18.2.0","lucide-react":"^0.468.0"}}
+
