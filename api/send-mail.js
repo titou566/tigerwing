@@ -5,48 +5,52 @@ export default async function handler(req, res) {
 
   try {
     const apiKey = process.env.RESEND_API_KEY;
-    const fromEmail = process.env.RESEND_FROM_EMAIL || "TigerWing <onboarding@resend.dev>";
 
     if (!apiKey) {
-      return res.status(500).json({ error: "RESEND_API_KEY missing in Vercel Environment Variables" });
+      return res.status(500).json({
+        error: "RESEND_API_KEY manquante dans Vercel"
+      });
     }
 
-    const { to_email, subject, body } = req.body || {};
+    const { to_email, subject, body } = req.body;
 
     if (!to_email || !subject || !body) {
-      return res.status(400).json({ error: "Missing to_email, subject or body" });
+      return res.status(400).json({
+        error: "Champs manquants"
+      });
     }
 
-    const resendResponse = await fetch("https://api.resend.com/emails", {
+    const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${apiKey}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        from: fromEmail,
+        from: "TigerWing <onboarding@resend.dev>",
         to: [to_email],
-        subject,
+        subject: subject,
         text: body
       })
     });
 
-    const data = await resendResponse.json();
+    const data = await response.json();
 
-    if (!resendResponse.ok) {
-      return res.status(resendResponse.status).json({
-        error: "Resend failed",
+    if (!response.ok) {
+      return res.status(500).json({
+        error: "Erreur Resend",
         details: data
       });
     }
 
     return res.status(200).json({
-      ok: true,
-      resend: data
+      success: true,
+      data
     });
-  } catch (error) {
+
+  } catch (err) {
     return res.status(500).json({
-      error: error.message || "Unknown error"
+      error: err.message
     });
   }
 }
